@@ -32,5 +32,10 @@ namespace CaseStudy.WebUI.Controllers
             }
             return Json(addResult.Resource);
         }
+
+        public async Task<IActionResult> UpdateAsync()
+        {
+            return null;
+        }
     }
 }
