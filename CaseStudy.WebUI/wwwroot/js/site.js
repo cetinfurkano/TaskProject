@@ -64,8 +64,6 @@
             toggleData.toggle = true;
             var id = event.target.id;
 
-            
-
             $.ajax({
                 type: "POST",
                 url: "Task/GetTaskDetail",
@@ -115,6 +113,95 @@
     $("#addTask").click(function () {
         toggleData.toggle = false;
     });
+    $("#saveChangeStatus").click(function () {
+        LoadinModal("Lütfen Bekleyin...", "Ekleniyor");
+
+        var formData = getSpecifiedFormData("#settingModalForm");
+        
+
+        updateStatus(formData);
+    });
+    $("#updateUser").click(function () {
+        LoadinModal("Lütfen Bekleyin...", "Ekleniyor");
+
+        var formData = getSpecifiedFormData("#updateUserForm");
+
+        updateUser(formData);
+
+    });
+
+    $("#settingUserSelect").on("change", function () {
+        LoadinModal("Lütfen Bekleyin", "Yükleniyor...");
+        var id = this.value;
+        $.ajax({
+            type: "POST",
+            url: "User/GetUser",
+            data: { id }
+        }).done(result => {
+            LoadinModalClose();
+            $("#updateUserFirstName").val(result.firstName);
+            $("#updateUserLastName").val(result.lastName);
+            $("#updateUserEmail").val(result.email );
+
+        }).catch(error => {
+            Alert_Error("İşlem Başarısız", error.responseText);
+        });
+    });
+
+
+    const updateUser = (formData) => {
+        $.ajax({
+            type: "POST",
+            url: "User/UpdateUser",
+            data: { resource: formData }
+        }).done(result => {
+            swal({
+                title: "Güncelleme",
+                text: "Kişi başarı ile güncellendi!",
+                type: 'success',
+                showConfirmButton: true,
+                confirmButtonText: 'Harika',
+                html: true
+            });
+            updateUserInfos(result);
+
+        }).catch(error => {
+            Alert_Error("İşlem Başarısız", error.responseText);
+        });
+    }
+    const updateUserInfos = (result) => {
+
+        var userOptions = $(".userSelect option[value='" + result.id + "']");
+        console.log(userOptions);
+        for (var i = 0; i < userOptions.length; i++) {
+            userOptions[i].innerHTML = result.firstName + " " + result.lastName;
+        }
+        var taskUsers = $("td[data-taskUser='" + result.id + "']");
+        for (var i = 0; i < taskUsers.length; i++) {
+            taskUsers[i].innerHTML = result.firstName;
+        }
+    }
+    
+    const updateStatus = (formData) => {
+        $.ajax({
+            type: "POST",
+            url: "Status/UpdateStatus",
+            data: { resource: formData }
+        }).done(result => {
+            swal({
+                title: "Güncelleme",
+                text: "Durum başarı ile güncellendi!",
+                type: 'success',
+                showConfirmButton: true,
+                confirmButtonText: 'Harika',
+                html: true
+            });
+            updateStatusInfos(result);
+
+        }).catch(error => {
+            Alert_Error("İşlem Başarısız", error.responseText);
+        });
+    }
 
     const deleteTask = (id) => {
         LoadinModal("Lütfen bekleyin...", "");
@@ -186,8 +273,8 @@
         var td = "";
 
         td += "<td>" + result.title + "</td>";
-        td += " <td>" + result.assignedUser.firstName + "</td>";
-        td += " <td><label class='badge badge-info'>" + result.status.statusDesc + "</label></td>";
+        td += " <td data-taskUser='"+result.assignedUser.id+"'>" + result.assignedUser.firstName + "</td>";
+        td += " <td><label class='badge badge-info statusDesc' data-statusId='"+result.status.id+"'>" + result.status.statusDesc + "</label></td>";
         td += " <td>" + result.dueDate + "</td>";
         td += " <td><strong>%" + result.priority + "</strong></td>";
         td += "<td>";
@@ -304,8 +391,24 @@
     };
 
     const appendStatus = (result) => {
-        var inputSelect = document.getElementById("inputState");
-        inputSelect.options[inputSelect.options.length] = new Option(result.statusDesc, String(result.id));
+      
+        var statusOptions = $(".statusSelect");
+        for (var i = 0; i < statusOptions.length; i++) {
+            statusOptions[i].options[statusOptions[i].options.length] = new Option(result.statusDesc, String(result.id));
+        }
+    };
+
+    const updateStatusInfos = (result) => {
+        var statusOptions = $(".statusSelect option[value='" + result.id + "']");
+        console.log(statusOptions);
+        for (var i = 0; i < statusOptions.length; i++) {
+            statusOptions[i].innerHTML = result.statusDesc;
+        }
+        var statusDescs = $(".statusDesc[data-statusId='" + result.id + "']");
+        for (var i = 0; i < statusDescs.length; i++) {
+            statusDescs[i].innerHTML = result.statusDesc;
+        }
+        
     };
 
     $("#saveUser").click(function () {

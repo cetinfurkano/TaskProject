@@ -27,9 +27,9 @@
                                     {
                                         <tr>
                                             <td>@task.Title</td>
-                                            <td>@task.AssignedUser.FirstName</td>
+                                            <td data-taskUser="@task.AssignedUser.Id">@task.AssignedUser.FirstName</td>
                                             <td>
-                                                <label class="badge badge-info">@task.Status.StatusDesc</label>
+                                                <label   class="badge badge-info    statusDesc" data-statusId="@task.Status.Id">@task.Status.StatusDesc</label>
                                             </td>
                                             <td>@task.DueDate</td>
                                             <td><strong>%@task.Priority</strong></td>
@@ -64,11 +64,21 @@
                                     data-target="#inputUserModal">
                                 Kişi Ekle
                             </button>
+                            <button class="btn btn-success"
+                                    data-toggle="modal"
+                                    data-target="#settingUserModal">
+                                Kişi Güncelle
+                            </button>
 
                             <button class="btn btn-success"
                                     data-toggle="modal"
                                     data-target="#inputStateModal">
                                 Durum Ekle
+                            </button>
+                            <button class="btn btn-success"
+                                    data-toggle="modal"
+                                    data-target="#settingsStateModal">
+                                Durum Güncelle
                             </button>
                         </div>
                     </div>
@@ -131,6 +141,74 @@
     </div>
 </div>
 
+<div class="modal fade" id="settingUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Kullanıcı Güncelle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="updateUserForm" method="post">
+                    <div class="form-group">
+                        <label for="settingUserSelect">Güncellenecek Kişi</label>
+                        <select id="settingUserSelect" name="id" class="custom-select userSelect" aria-describedby="personHelp">
+                            @foreach (var user in Model.Users)
+                            {
+                                <option value="@user.Id">
+                                    @String.Format($"{user.FirstName} {user.LastName}")
+                                </option>
+                            }
+                        </select>
+                        <small id="personHelp" class="form-text text-muted">Güncellenecek kişiyi seçin</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updateUserFirstName">Kişi İsmi</label>
+                        <input type="text"
+                               class="form-control"
+                               id="updateUserFirstName"
+                               name="firstName"
+                               aria-describedby="uptUserHelp"
+                               placeholder="Kişinin adını girin." />
+                        <small id="uptUserHelp" class="form-text text-muted">Görevi tanımlayacak bir başlık girilmelidir.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updateUserLastName">Kişi Soyadı</label>
+                        <input type="text"
+                               class="form-control"
+                               id="updateUserLastName"
+                               name="lastName"
+                               aria-describedby="uptLastName"
+                               placeholder="Kişinin adını girin.." />
+                        <small id="uptLastName" class="form-text text-muted">Kişinin soyadını girin.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updateUserEmail">Kişi Eposta</label>
+                        <input type="email"
+                               class="form-control"
+                               name="email"
+                               id="updateUserEmail"
+                               aria-describedby="uptMail"
+                               placeholder="Kişinin adını girin.." />
+                        <small id="uptMail" class="form-text text-muted">Kişinin Eposta adresini girin.</small>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button id="updateUser" type="button" class="btn btn-primary" data-dismiss="modal">Tamamla</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="modal fade" id="inputStateModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -157,6 +235,49 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
                 <button id="saveStatus" type="button" class="btn btn-primary" data-dismiss="modal">Tamamla</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="settingsStateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Durum Bilgisi Ayarları</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="settingModalForm" method="post">
+                    <div class="form-group">
+                        <label for="settingStatus">Göreve Atanacak Kişi</label>
+                        <select id="settingStatus" name="id" class="custom-select statusSelect" aria-describedby="assignedHelp">
+                            @foreach (var status in Model.Statuses)
+                            {
+                                <option value="@status.Id">
+                                    @String.Format($"{status.StatusDesc}")
+                                </option>
+                            }
+                        </select>
+                        <small id="assignedHelp" class="form-text text-muted">Güncellenecek durumu seçin</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="settingInput">Durum Bilgisi</label>
+                        <input type="text"
+                               class="form-control"
+                               id="settingInput"
+                               name="statusDesc"
+                               aria-describedby="settingStateHelp"
+                               placeholder="Durum bilgisini girin." />
+                        <small id="settingStateHelp" class="form-text text-muted">Güncellenecek durum bilgisini girin.</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                 <button id="saveChangeStatus" type="button" class="btn btn-primary" data-dismiss="modal">Tamamla</button>
             </div>
         </div>
     </div>
@@ -249,7 +370,7 @@
 
                     <div class="form-group">
                         <label for="inputAssigned">Göreve Atanacak Kişi</label>
-                        <select id="inputAssigned" name="assignedId" class="custom-select" aria-describedby="assignedHelp">
+                        <select id="inputAssigned" name="assignedId" class="custom-select userSelect" aria-describedby="assignedHelp">
                             @foreach (var user in Model.Users)
                             {
                                 <option value="@user.Id">
@@ -261,7 +382,7 @@
                     </div>
                     <div class="form-group">
                         <label for="inputAppointed">Görevi Atayan Kişi</label>
-                        <select id="inputAppointed" name="appointedId" class="custom-select" aria-describedby="appointedHelp">
+                        <select id="inputAppointed" name="appointedId" class="custom-select userSelect" aria-describedby="appointedHelp">
                             @foreach (var user in Model.Users)
                             {
                                 <option value="@user.Id">
@@ -274,7 +395,7 @@
 
                     <div class="form-group">
                         <label for="inputState">Görevin Durumu</label>
-                        <select id="inputState" name="statusId" class="custom-select" aria-describedby="stateHelp">
+                        <select id="inputState" name="statusId" class="custom-select statusSelect" aria-describedby="stateHelp">
                             @foreach (var state in Model.Statuses)
                             {
                                 <option value="@state.Id">

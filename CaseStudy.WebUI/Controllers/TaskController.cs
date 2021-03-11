@@ -88,7 +88,7 @@ namespace CaseStudy.WebUI.Controllers
             {
                 return BadRequest(deleteResult.Message);
             }
-            return Ok();
+            return Json(deleteResult.Resource);
         }
 
     }

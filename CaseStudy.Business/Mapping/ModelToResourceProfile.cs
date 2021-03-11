@@ -12,8 +12,10 @@ namespace CaseStudy.Business.Mapping
         public ModelToResourceProfile()
         {
             CreateMap<User, SaveUserResource>();
+            CreateMap<User, UpdateUserResource > ();
 
             CreateMap<Status, StatusResource>();
+            CreateMap<Status, UpdateStatusResource>();
 
             CreateMap<UserTask, UserTaskResource>().ForMember(
                 src => src.StartingDate,

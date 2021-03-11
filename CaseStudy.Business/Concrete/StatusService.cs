@@ -75,7 +75,6 @@ namespace CaseStudy.Business.Concrete
             {
                 _statusDal.Remove(existingStatus);
                 await _unitOfWork.CompleteAsync();
-
                 return OperationResponse<Status>.CreateSuccesResponse(existingStatus);
             }
             catch (Exception ex)
@@ -96,7 +95,7 @@ namespace CaseStudy.Business.Concrete
             var existingStatus = await _statusDal.GetAsync(s => s.Id == status.Id);
             if (existingStatus == null)
             {
-                return OperationResponse<Status>.CreateFailure("UserTask bulunamadı!");
+                return OperationResponse<Status>.CreateFailure("Status bulunamadı!");
             }
 
             existingStatus.StatusDesc = status.StatusDesc;

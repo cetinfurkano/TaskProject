@@ -33,9 +33,17 @@ namespace CaseStudy.WebUI.Controllers
             return Json(addResult.Resource);
         }
 
-        public async Task<IActionResult> UpdateAsync()
+        public async Task<IActionResult> UpdateStatus(UpdateStatusResource resource)
         {
-            return null;
+            var status = _mapper.Map<UpdateStatusResource, Status>(resource);
+            var updateResult = await _statusService.UpdateAsync(status);
+            if (!updateResult.Success)
+            {
+                return BadRequest(updateResult.Message);
+            }
+            return Json(updateResult.Resource);
         }
+
+       
     }
 }

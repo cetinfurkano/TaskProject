@@ -32,5 +32,28 @@ namespace CaseStudy.WebUI.Controllers
             }
             return Json(addResult.Resource);
         }
+        public async Task<IActionResult> UpdateUser(UpdateUserResource resource)
+        {
+            var user = _mapper.Map<UpdateUserResource, User>(resource);
+
+            var updateResult = await _userService.UpdateAsync(user);
+            if (!updateResult.Success)
+            {
+                return BadRequest(updateResult.Message);
+            }
+            return Json(updateResult.Resource);
+        }
+
+        public async Task<IActionResult> GetUser(int id)
+        {
+            var result = await _userService.GetByIdAsync(id);
+
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Json(result.Resource);
+        }
+
     }
 }

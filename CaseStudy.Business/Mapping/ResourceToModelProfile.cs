@@ -12,10 +12,13 @@ namespace CaseStudy.Business.Mapping
         public ResourceToModelProfile()
         {
             CreateMap<SaveUserResource, User>();
+            CreateMap<UpdateUserResource, User>();
 
             CreateMap<StatusResource, Status>();
+            CreateMap<UpdateStatusResource, Status>();
 
             CreateMap<UserTaskResource, UserTask>();
+            
         }
     }
 }
