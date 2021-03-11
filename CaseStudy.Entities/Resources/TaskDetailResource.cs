@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CaseStudy.Entity.Resources
 {
-    public class TaskDetailResource:IResource
+    public class TaskDetailResource
     {
         public int Id { get; set; }
         public string Title { get; set; }

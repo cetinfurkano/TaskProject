@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CaseStudy.Entity.Resources
 {
-   public class SaveUserResource:IResource
+   public class SaveUserResource
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
