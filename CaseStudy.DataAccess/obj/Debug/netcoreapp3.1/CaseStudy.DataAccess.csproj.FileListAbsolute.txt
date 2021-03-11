@@ -1,0 +1,14 @@
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\bin\Debug\netcoreapp3.1\CaseStudy.Core.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\bin\Debug\netcoreapp3.1\CaseStudy.Entity.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\obj\Debug\netcoreapp3.1\CaseStudy.DataAccess.csprojAssemblyReference.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\obj\Debug\netcoreapp3.1\CaseStudy.DataAccess.AssemblyInfoInputs.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\obj\Debug\netcoreapp3.1\CaseStudy.DataAccess.AssemblyInfo.cs
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\bin\Debug\netcoreapp3.1\CaseStudy.DataAccess.deps.json
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\bin\Debug\netcoreapp3.1\CaseStudy.DataAccess.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\bin\Debug\netcoreapp3.1\CaseStudy.DataAccess.pdb
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\bin\Debug\netcoreapp3.1\CaseStudy.Core.pdb
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\bin\Debug\netcoreapp3.1\CaseStudy.Entity.pdb
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\obj\Debug\netcoreapp3.1\CaseStudy.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\obj\Debug\netcoreapp3.1\CaseStudy.DataAccess.csproj.CopyComplete
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\obj\Debug\netcoreapp3.1\CaseStudy.DataAccess.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.DataAccess\obj\Debug\netcoreapp3.1\CaseStudy.DataAccess.pdb

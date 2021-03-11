@@ -1,0 +1,308 @@
+﻿@model TaskViewModel
+
+<div class="container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Görevler Tablosu</h4>
+                        <p class="card-description">Case study</p>
+                        <div class="table-responsive">
+                            <table id="taskTable" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Başlık</th>
+                                        <th>Atanan</th>
+                                        <th>Durum</th>
+                                        <th>Bitiş Tarihi</th>
+                                        <th>Öncelik</th>
+                                        <th>Düzenle</th>
+                                        <th>Sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var task in Model.TaskDetails)
+                                    {
+                                        <tr>
+                                            <td>@task.Title</td>
+                                            <td>@task.AssignedUser.FirstName</td>
+                                            <td>
+                                                <label class="badge badge-info">@task.Status.StatusDesc</label>
+                                            </td>
+                                            <td>@task.DueDate</td>
+                                            <td><strong>%@task.Priority</strong></td>
+                                            <td>
+                                                <button id="@task.Id"
+                                                        class="btn btn-warning edit"
+                                                        data-toggle="modal"
+                                                        data-target="#inputTaskModal">
+                                                    Düzenle
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger delete"
+                                                        data-delete="@task.Id">
+                                                    Sil
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                            <button id="addTask"
+                                    class="btn btn-success"
+                                    data-toggle="modal"
+                                    data-target="#inputTaskModal">
+                                Görev Ekle
+                            </button>
+
+                            <button class="btn btn-success"
+                                    data-toggle="modal"
+                                    data-target="#inputUserModal">
+                                Kişi Ekle
+                            </button>
+
+                            <button class="btn btn-success"
+                                    data-toggle="modal"
+                                    data-target="#inputStateModal">
+                                Durum Ekle
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="inputUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Kullanıcı Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addUserForm" method="post">
+                    <div class="form-group">
+                        <label for="inputUserFirstName">Kişi İsmi</label>
+                        <input type="text"
+                               class="form-control"
+                               id="inputUserFirstName"
+                               name="firstName"
+                               aria-describedby="FirstNameHelp"
+                               placeholder="Kişinin adını girin." />
+                        <small id="FirstNameHelp" class="form-text text-muted">Görevi tanımlayacak bir başlık girilmelidir.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputUserLastName">Kişi Soyadı</label>
+                        <input type="text"
+                               class="form-control"
+                               id="inputUserLastName"
+                               name="lastName"
+                               aria-describedby="lastNameHelp"
+                               placeholder="Kişinin adını girin.." />
+                        <small id="lastNameHelp" class="form-text text-muted">Kişinin soyadını girin.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputUserEmail">Kişi Eposta</label>
+                        <input type="email"
+                               class="form-control"
+                               name="email"
+                               id="inputUserEmail"
+                               aria-describedby="emailHelp"
+                               placeholder="Kişinin adını girin.." />
+                        <small id="emailHelp" class="form-text text-muted">Kişinin Eposta adresini girin.</small>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button id="saveUser" type="button" class="btn btn-primary" data-dismiss="modal">Tamamla</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="inputStateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Durum Bilgisi Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="inputStateForm" method="post">
+                    <div class="form-group">
+                        <label for="stateInput">Durum Bilgisi</label>
+                        <input type="text"
+                               class="form-control"
+                               id="stateInput"
+                               name="statusDesc"
+                               aria-describedby="inputStateHelp"
+                               placeholder="Durum bilgisini girin." />
+                        <small id="inputStateHelp" class="form-text text-muted">Yeni eklenecek durum bilgisini girin.</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button id="saveStatus" type="button" class="btn btn-primary" data-dismiss="modal">Tamamla</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade"
+     id="inputTaskModal"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Görev Detayları</h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="tasksForm" action="" type="POST">
+                    <div class="form-group">
+                        <label for="inputTitle">Görev Başlığı</label>
+                        <input type="text"
+                               class="form-control"
+                               id="inputTitle"
+                               name="title"
+                               aria-describedby="titleHelp"
+                               placeholder="Görev başlığı gir.." />
+                        <small id="titleHelp" class="form-text text-muted">Görevi tanımlayacak bir başlık girilmelidir.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputDescription">Görev Açıklaması</label>
+                        <input type="text"
+                               class="form-control"
+                               id="inputDescription"
+                               name="description"
+                               aria-describedby="descHelp"
+                               placeholder="Görev açıklaması gir.." />
+                        <small id="descHelp" class="form-text text-muted">Görevi tanımlayacak bir başlık girilmelidir.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputDate">Görev Başlangıç Tarihi</label>
+                        <div id="inputDate" class="input-group date">
+                            <input id="date"
+                                   name="startingDate"
+                                   type="text"
+                                   class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-th"></i>
+                            </span>
+                            <br>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputDate">Görev Bitiş Tarihi</label>
+                        <div id="inputDueDate" class="input-group date">
+                            <input id="dueDate"
+                                   name="dueDate"
+                                   type="text"
+                                   class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-th"></i>
+                            </span>
+                            <br>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputExpectDue">Görev Tahmini Bitiş Tarihi</label>
+                        <div id="inputExpectDue" class="input-group date">
+                            <input id="expectDue"
+                                   name="expectedDueDate"
+                                   type="text"
+                                   class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-th"></i>
+                            </span>
+                            <br>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputAssigned">Göreve Atanacak Kişi</label>
+                        <select id="inputAssigned" name="assignedId" class="custom-select" aria-describedby="assignedHelp">
+                            @foreach (var user in Model.Users)
+                            {
+                                <option value="@user.Id">
+                                    @String.Format($"{user.FirstName} {user.LastName}")
+                                </option>
+                            }
+                        </select>
+                        <small id="assignedHelp" class="form-text text-muted">Görevi oluştururken kime verildiği belirtilmelidir.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAppointed">Görevi Atayan Kişi</label>
+                        <select id="inputAppointed" name="appointedId" class="custom-select" aria-describedby="appointedHelp">
+                            @foreach (var user in Model.Users)
+                            {
+                                <option value="@user.Id">
+                                    @String.Format($"{user.FirstName} {user.LastName}")
+                                </option>
+                            }
+                        </select>
+                        <small id="appointedHelp" class="form-text text-muted">Görevi oluştururken kimin verdiği belirtilmelidir.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputState">Görevin Durumu</label>
+                        <select id="inputState" name="statusId" class="custom-select" aria-describedby="stateHelp">
+                            @foreach (var state in Model.Statuses)
+                            {
+                                <option value="@state.Id">
+                                    @String.Format($"{state.StatusDesc}")
+                                </option>
+                            }
+                        </select>
+                        <small id="stateHelp" class="form-text text-muted">Görev durumunu belirtin.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPriority">Görev Önceliği</label>
+                        <input type="range" name="priority" class="form-control-range" id="inputPriority" aria-describedby="priorityHelp">
+                        <small id="priorityHelp" class="form-text text-muted">Görev durumunu yüzdelik olarak belirtin.</small>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button id="close"
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">
+                    Kapat
+                </button>
+                <button id="saveTask" type="button" class="btn btn-primary" data-dismiss="modal">Tamamla</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\bin\Debug\netcoreapp3.1\CaseStudy.Business.deps.json
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\bin\Debug\netcoreapp3.1\CaseStudy.Business.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\bin\Debug\netcoreapp3.1\CaseStudy.Business.pdb
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\bin\Debug\netcoreapp3.1\CaseStudy.Core.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\bin\Debug\netcoreapp3.1\CaseStudy.DataAccess.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\bin\Debug\netcoreapp3.1\CaseStudy.Entity.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\bin\Debug\netcoreapp3.1\CaseStudy.DataAccess.pdb
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\bin\Debug\netcoreapp3.1\CaseStudy.Entity.pdb
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\bin\Debug\netcoreapp3.1\CaseStudy.Core.pdb
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\obj\Debug\netcoreapp3.1\CaseStudy.Business.csprojAssemblyReference.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\obj\Debug\netcoreapp3.1\CaseStudy.Business.AssemblyInfoInputs.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\obj\Debug\netcoreapp3.1\CaseStudy.Business.AssemblyInfo.cs
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\obj\Debug\netcoreapp3.1\CaseStudy.Business.csproj.CoreCompileInputs.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\obj\Debug\netcoreapp3.1\CaseStudy.Business.csproj.CopyComplete
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\obj\Debug\netcoreapp3.1\CaseStudy.Business.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Business\obj\Debug\netcoreapp3.1\CaseStudy.Business.pdb

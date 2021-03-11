@@ -1,0 +1,9 @@
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Core\bin\Debug\netcoreapp3.1\CaseStudy.Core.deps.json
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Core\bin\Debug\netcoreapp3.1\CaseStudy.Core.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Core\bin\Debug\netcoreapp3.1\CaseStudy.Core.pdb
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Core\obj\Debug\netcoreapp3.1\CaseStudy.Core.csprojAssemblyReference.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Core\obj\Debug\netcoreapp3.1\CaseStudy.Core.AssemblyInfoInputs.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Core\obj\Debug\netcoreapp3.1\CaseStudy.Core.AssemblyInfo.cs
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Core\obj\Debug\netcoreapp3.1\CaseStudy.Core.csproj.CoreCompileInputs.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Core\obj\Debug\netcoreapp3.1\CaseStudy.Core.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Core\obj\Debug\netcoreapp3.1\CaseStudy.Core.pdb

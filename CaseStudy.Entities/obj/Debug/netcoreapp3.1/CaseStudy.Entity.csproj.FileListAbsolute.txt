@@ -1,0 +1,12 @@
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\bin\Debug\netcoreapp3.1\CaseStudy.Entity.deps.json
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\bin\Debug\netcoreapp3.1\CaseStudy.Entity.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\bin\Debug\netcoreapp3.1\CaseStudy.Entity.pdb
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\bin\Debug\netcoreapp3.1\CaseStudy.Core.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\bin\Debug\netcoreapp3.1\CaseStudy.Core.pdb
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\obj\Debug\netcoreapp3.1\CaseStudy.Entity.csprojAssemblyReference.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\obj\Debug\netcoreapp3.1\CaseStudy.Entity.AssemblyInfoInputs.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\obj\Debug\netcoreapp3.1\CaseStudy.Entity.AssemblyInfo.cs
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\obj\Debug\netcoreapp3.1\CaseStudy.Entity.csproj.CoreCompileInputs.cache
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\obj\Debug\netcoreapp3.1\CaseStudy.Entity.csproj.CopyComplete
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\obj\Debug\netcoreapp3.1\CaseStudy.Entity.dll
+C:\Users\cetin\source\repos\CaseStudy\CaseStudy.Entities\obj\Debug\netcoreapp3.1\CaseStudy.Entity.pdb
